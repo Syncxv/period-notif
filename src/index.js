@@ -1,4 +1,5 @@
 const { Client, Collection } = require('discord.js');
+const keepAlive = require("./server");
 const commands = require("./commands")
 const Classes = require("./classes")
 const calcTime = require('./timeIST')
@@ -43,7 +44,7 @@ const notif = () => {
 
 client.on('ready', (e) => {
     console.log('Bot is ready...', e);
-    client.user.setActivity(':D gang gang');
+    client.user.setActivity('https://github.com/Syncxv/period-notif');
     notif()
     var interval = setInterval(notif, 60000)
   })
@@ -67,6 +68,6 @@ client.on('ready', (e) => {
     } catch (err) {
       console.error(err);
     }
-  });
-
+});
+keepAlive();
 client.login(token);
