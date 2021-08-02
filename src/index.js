@@ -25,30 +25,32 @@ const send = (text) => {
 }
 const notif = () => {
         var ok = calcTime().getHours()
-        if (!(ok >= 8 && ok
-            <= 14)) {
+        if (!(ok >= 8 && ok <= 14)) {
             console.log("DONE FOR THE DAY")
             return; 
         }
         var time = calcTime()
+        // time.setHours(9, 20);
+        var day = time.getDay()
         var formatedStartEndTImes = Classes.formatAllTimes()
         // formatedStartEndTImes[0].push(Classes.formatTimeHM(Classes.addMinutes(new Date(), 1)))
-        if(formatedStartEndTImes[0].indexOf(Classes.formatTimeHM(time))) {
-          send("HEY SKOOL TIME :O")
+        var period = formatedStartEndTImes[0].indexOf(Classes.formatTimeHM(time));
+        if(period > -1) {
+          send(`HEY SKOOL TIME :O\nDay:\`${time.toLocaleString('en-us', {  weekday: 'long' })}\`\nClass: \`${Classes.timeTable[day][period]}\`\nTimes:\`${Classes.formatTimeHM(Classes.startTimes[period])} - ${Classes.formatTimeHM(Classes.endTimes[period])}\``)
         }
-        console.log(Classes.formatTimeHM(time), formatedStartEndTImes[0]);
-        // console.log(calcTime().getTime())
+        console.log(Classes.formatTimeHM(time));
     }
 
 client.on('ready', (e) => {
     console.log('Bot is ready...', e);
+    client.user.setActivity(':D gang gang');
     notif()
     var interval = setInterval(notif, 60000)
   })
   .on('message', (message) => {
     if (!message.content.startsWith(prefix)) return;
     if (message.author.bot) return;
-    if (message.channel.type !== 'text') return;
+    // if (message.channel.type !== 'text') return;
     const messageSplit = message.content.split(/\s+/g);
     const cmd = messageSplit[0].slice(prefix.length);
     const args = messageSplit.slice(1);

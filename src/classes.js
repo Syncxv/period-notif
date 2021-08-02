@@ -1,17 +1,12 @@
 const calcTime = require('./timeIST')
 class Classes {
     constructor() {
-        this.classes - {
-            acc: "accounts",
-            phy: "physics",
-            bio: "biology",
-            bst: "business",
-            lang: "language",
-            ict: "ict",
-            free: "self study",
-            english: "fle/esl",
-            math: "math",
-            chem: "chemistry"
+        this.timeTable = {
+            1: ["phy/acc", "bio/bst", "chem/eco", "lang", "math", "phy/acc"],
+            2: ["ict", "lang", "phy/acc", "ict", "math", "self study / FREE"],
+            3: ["fle/esl", "fle/esl", "bio/bst", "chem/eco", "math", "self study / FREE"],
+            4: ["bio/bst", "chem/eco", "math", "lang", "phy/acc", "ict"],
+            5: ["lang", "chem/eco", "fle/esl", "fle/esl", "bio/bst", "ict"]
         }
         const [start, end] = this.generateStartTimes(calcTime(), [8, 30], 45)
         this.startTimes = start
@@ -20,7 +15,6 @@ class Classes {
     //psudo code
     // start time + class time + break time
     // 8:30 + 45 = 9:15 + 5 = 9:20
-
     generateStartTimes(date, startTime, classTime) {
         const startTimes = []
         const endTimes = []
@@ -55,4 +49,16 @@ class Classes {
 //     4: ["bio/bst", "chem/eco", "math", "lang", "phy/acc", "ict"],
 //     5: ["lang", "chem/eco", "fle/esl", "fle/esl", "bio/bst", "ict"]
 // }
+// this.classes - {
+        //     acc: "accounts",
+        //     phy: "physics",
+        //     bio: "biology",
+        //     bst: "business",
+        //     lang: "language",
+        //     ict: "ict",
+        //     free: "self study",
+        //     english: "fle/esl",
+        //     math: "math",
+        //     chem: "chemistry"
+        // }
 module.exports = new Classes
