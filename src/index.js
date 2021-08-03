@@ -45,7 +45,7 @@ const notif = () => {
 
 client.on('ready', (e) => {
     console.log('Bot is ready...', e);
-    client.user.setActivity('https://github.com/Syncxv/period-notif');
+    client.user.setActivity(':|');
     notif()
     var interval = setInterval(notif, 60000)
   })
