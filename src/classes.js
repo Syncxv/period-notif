@@ -40,6 +40,10 @@ class Classes {
     subMinutes(date, minutes) {
         return new Date(date.getTime() - minutes*60000);
     }
+    getCurrentClass() {
+        const time = calcTime();
+        //ill do it later
+    }
 }
 // const classes =  {
 //     times: ['8:30AM - 9:20AM', "9:20AM - 10:05AM", "10:10AM - 10:55AM", "11:00AM - 11:45","11:50PM - 12:35PM", "12:40PM - 1:25PM"],

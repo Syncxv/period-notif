@@ -45,7 +45,7 @@ const notif = () => {
 
 client.on('ready', (e) => {
     console.log('Bot is ready...', e);
-    client.user.setActivity(':|');
+    client.user.setActivity(data.prefix+'help');
     notif()
     var interval = setInterval(notif, 60000)
   })
@@ -65,6 +65,7 @@ client.on('ready', (e) => {
       }
       console.log(message.author.presence[0])
       if (!command) return;
+      if(command.depends) return command.execute(client, message, args, Classes); 
       command.execute(client, message, args);
     } catch (err) {
       console.error(err);

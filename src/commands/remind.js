@@ -1,6 +1,7 @@
 module.exports = {
     name: 'remind',
     aliases: ['rem', 'r'],
+    description: 'NOT Finished yet, ill update it maybe hehe',
     execute(client, message, args) {
         console.log("BRO")
         console.log(message.author.id)
