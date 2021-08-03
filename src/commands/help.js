@@ -21,7 +21,7 @@ module.exports = {
     const embed = {
         type: 'rich',
         title: 'Help',
-        description: `**__Status:__**\n\n**GuildID:** \`${data.guild}\`\n**Channel:** <#${data.channel}>/\`${data.channel}\`**Role:** <@&${data.role}>\n\n**__List Of Commands:__**\n\n${commands.map
+        description: `**__Status:__**\n\n**GuildID:** \`${data.guild}\`\n**Channel:** <#${data.channel}>/\`${data.channel}\`\n**Role:** <@&${data.role}>\n\n**__List Of Commands:__**\n\n${commands.map
             (({ name, description }) =>
                 `\`${name.padEnd((longestCommandName * 2) - name.length, ' \u200b')} |\` \u200b \u200b*${description}*`
               )
