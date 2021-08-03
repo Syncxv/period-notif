@@ -3,12 +3,15 @@ const keepAlive = require("./server");
 const commands = require("./commands")
 const Classes = require("./classes")
 const calcTime = require('./timeIST')
+const data = require('../data.json')
 require('dotenv').config();
+
+
 const token = process.env['token']
 const client = new Client();
 client.commands = new Collection();
 client.aliases = new Collection();
-const prefix = "!"
+
 function init() {
     Object.values(commands).forEach(command => {
         client.commands.set(command.name, command);
@@ -47,11 +50,11 @@ client.on('ready', (e) => {
     var interval = setInterval(notif, 60000)
   })
   .on('message', (message) => {
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(data.prefix)) return;
     if (message.author.bot) return;
     // if (message.channel.type !== 'text') return;
     const messageSplit = message.content.split(/\s+/g);
-    const cmd = messageSplit[0].slice(prefix.length);
+    const cmd = messageSplit[0].slice(data.prefix.length);
     const args = messageSplit.slice(1);
     try {
       let command;

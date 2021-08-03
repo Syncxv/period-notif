@@ -1,6 +1,6 @@
 {
   "name": "BETTER-PERIOD-NOTIFER",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
   }
 }
