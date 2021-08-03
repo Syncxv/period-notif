@@ -22,7 +22,7 @@ function init() {
 init()
 const send = (text) => {
     const channel = client.channels.cache.get('773024516200595496');
-    channel.send(text)
+    channel.send("<@&816882642661408799> " + text)
 }
 const notif = () => {
         var ok = calcTime().getHours()
@@ -31,10 +31,8 @@ const notif = () => {
             return; 
         }
         var time = calcTime()
-        // time.setHours(9, 20);
         var day = time.getDay()
         var formatedStartEndTImes = Classes.formatAllTimes()
-        // formatedStartEndTImes[0].push(Classes.formatTimeHM(Classes.addMinutes(new Date(), 1)))
         var period = formatedStartEndTImes[0].indexOf(Classes.formatTimeHM(time));
         if(period > -1) {
           send(`HEY SKOOL TIME :O\nDay:\`${time.toLocaleString('en-us', {  weekday: 'long' })}\`\nClass: \`${Classes.timeTable[day][period]}\`\nTimes:\`${Classes.formatTimeHM(Classes.startTimes[period])} - ${Classes.formatTimeHM(Classes.endTimes[period])}\``)
