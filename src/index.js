@@ -25,7 +25,7 @@ function init() {
 init()
 const send = (text) => {
     const channel = client.channels.cache.get(data.channel);
-    channel.send("<@&816882642661408799> " + text)
+    channel.send(`<@&${data.role}> ` + text)
 }
 const notif = () => {
         var ok = calcTime().getHours()

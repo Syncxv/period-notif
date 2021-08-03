@@ -12,7 +12,7 @@ module.exports = {
             data.prefix = args[1]
             fs.writeFileSync(path.resolve(__dirname, '..', '..', 'data.json'), JSON.stringify(data), 'utf8');
             message.channel.send("DONE :D new prefix: " + args[1])
-
+            
         }
     },
   };
