@@ -24,7 +24,7 @@ function init() {
 }
 init()
 const send = (text) => {
-    const channel = client.channels.cache.get('816589800542175283');
+    const channel = client.channels.cache.get(data.channel);
     channel.send("<@&816882642661408799> " + text)
 }
 const notif = () => {

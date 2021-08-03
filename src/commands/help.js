@@ -20,12 +20,12 @@ module.exports = {
     // OBJECT > ThaT GARBAGE MESSAGE EMBED THING ABOVE
     const embed = {
         type: 'rich',
-        title: 'All Commands',
-        description: commands.map
-        (({ name, description }) =>
-            `\`${name.padEnd((longestCommandName * 2) - name.length, ' \u200b')} |\` \u200b \u200b*${description}*`
-          )
-          .join('\n'),
+        title: 'Help',
+        description: `**Status:**\n**Channel:** <#${data.channel}>/\`${data.channel}\`\n\n**__List Of Commands:__**\n\n${commands.map
+            (({ name, description }) =>
+                `\`${name.padEnd((longestCommandName * 2) - name.length, ' \u200b')} |\` \u200b \u200b*${description}*`
+              )
+              .join('\n')}`,
         footer: {
           text: `Try ${data.prefix}help <commandName> hehe`
         }
