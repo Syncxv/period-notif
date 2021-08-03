@@ -1,4 +1,4 @@
-const calcTime = require('./timeIST')
+const calcTime = require('./utils/timeIST')
 class Classes {
     constructor() {
         this.timeTable = {
@@ -11,6 +11,7 @@ class Classes {
         const [start, end] = this.generateStartTimes(calcTime(), [8, 30], 45)
         this.startTimes = start
         this.endTimes = end
+        this.formated = this.formatAllTimes()
     }
     //psudo code
     // start time + class time + break time
@@ -41,8 +42,27 @@ class Classes {
         return new Date(date.getTime() - minutes*60000);
     }
     getCurrentClass() {
+        // DOESNWT WORK IM STUPID
         const time = calcTime();
+        for (let i = 0; i < this.startTimes.length; ++i) {
+            const periodStart = this.startTimes[i];
+            const periodEnd = this.endTimes[Boolean(i) ? i-1 : i];
+            const start = periodStart.getHours() * 60 + periodStart.getMinutes()
+            const end = periodEnd.getHours() * 60 + periodEnd.getMinutes()
+            const now = time.getHours() * 60 + time.getMinutes();
+            if(start <= now && now <= end) {
+                var periodIndex = this.startTimes.indexOf(periodStart)
+                return this.timeTable[time.getDay()][periodIndex]
+            }
+                
+        }
+        
         //ill do it later
+    }
+
+
+    getNextClass() {
+
     }
 }
 // const classes =  {

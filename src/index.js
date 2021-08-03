@@ -1,11 +1,11 @@
 const { Client, Collection } = require('discord.js');
-const keepAlive = require("./server");
+const keepAlive = require("./utils/server");
 const commands = require("./commands")
 const Classes = require("./classes")
-const calcTime = require('./timeIST')
+const calcTime = require('./utils/timeIST')
 const data = require('../data.json')
 require('dotenv').config();
-
+const fs = require('fs')
 
 const token = process.env['token']
 const client = new Client();
@@ -28,6 +28,7 @@ const send = (text) => {
     channel.send(`<@&${data.role}> ` + text)
 }
 const notif = () => {
+        if(!data.enabled) clearInterval(interval)
         var ok = calcTime().getHours()
         if (!(ok >= 8 && ok <= 14)) {
             console.log("DONE FOR THE DAY")
@@ -46,13 +47,14 @@ const notif = () => {
 client.on('ready', (e) => {
     console.log('Bot is ready...', e);
     client.user.setActivity(data.prefix+'help');
-    notif()
-    var interval = setInterval(notif, 60000)
+    if (data.enabled) {
+      notif()
+      global.interval = setInterval(notif, 60000)
+    }
   })
   .on('message', (message) => {
     if (!message.content.startsWith(data.prefix)) return;
     if (message.author.bot) return;
-    // if (message.channel.type !== 'text') return;
     const messageSplit = message.content.split(/\s+/g);
     const cmd = messageSplit[0].slice(data.prefix.length);
     const args = messageSplit.slice(1);
@@ -63,12 +65,12 @@ client.on('ready', (e) => {
       } else if (client.aliases.has(cmd)) {
         command = client.commands.get(client.aliases.get(cmd));
       }
-      console.log(message.author.presence[0])
       if (!command) return;
       if(command.depends) return command.execute(client, message, args, Classes); 
       command.execute(client, message, args);
     } catch (err) {
       console.error(err);
+      fs.writeFileSync("../debug.log", err.toString(), 'utf8')
     }
 });
 keepAlive();

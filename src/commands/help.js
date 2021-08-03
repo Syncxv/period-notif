@@ -21,13 +21,13 @@ module.exports = {
     const embed = {
         type: 'rich',
         title: 'Help',
-        description: `**__Status:__**\n\n**GuildID:** \`${data.guild}\`\n**Channel:** <#${data.channel}>/\`${data.channel}\`\n**Role:** <@&${data.role}>\n\n**__List Of Commands:__**\n\n${commands.map
+        description: `**__Status:__**\n\n**Running:** ${data.enabled}\n**Guild ID:** \`${data.guild}\`\n**Channel:** <#${data.channel}>/\`${data.channel}\`\n**Role:** <@&${data.role}>\n\n**__List Of Commands:__**\n\n${commands.map
             (({ name, description }) =>
                 `\`${name.padEnd((longestCommandName * 2) - name.length, ' \u200b')} |\` \u200b \u200b*${description}*`
               )
               .join('\n')}`,
         footer: {
-          text: `Try ${data.prefix}help <commandName> hehe`
+          text: `Try \`${data.prefix}help <commandName>\` hehe`
         }
       };
       message.channel.send({embed});
@@ -41,7 +41,7 @@ module.exports = {
             description: "**__Description:__**\n"+command.description,
             fields: [ {
               name: '**__Usage:__**',
-              value: command.usage ? `\` ${data.prefix}${command.usage.replace("{c}", command.name)} \`` : `${data.prefix}${command.name}`,
+              value: command.usage ? `\` ${data.prefix}${command.usage.replace("{c}", command.name)} \`` : `\`${data.prefix}${command.name}\``,
               inline: false
             } ],
             footer: {

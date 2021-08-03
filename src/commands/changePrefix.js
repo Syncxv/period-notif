@@ -1,6 +1,6 @@
 const data = require('../../data.json')
 const path = require('path')
-const fs = require('fs')
+const write = require('../utils/wirteJson')
 module.exports = {
     name: 'prefix',
     aliases: ['p'],
@@ -10,7 +10,7 @@ module.exports = {
         if(!args.length) return message.channel.send("current prefix is: " + data.prefix)
         if(args[0] === "-change") {
             data.prefix = args[1]
-            fs.writeFileSync(path.resolve(__dirname, '..', '..', 'data.json'), JSON.stringify(data), 'utf8');
+            client.user.setActivity(data.prefix+'help');
             message.channel.send("DONE :D new prefix: " + args[1])
             
         }

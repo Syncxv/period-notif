@@ -1,4 +1,4 @@
-const calcTime = require("../timeIST")
+const calcTime = require("../utils/timeIST")
 const Classes = require('../classes')
 module.exports = {
     name: 'time',

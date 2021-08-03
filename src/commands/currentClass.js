@@ -1,13 +1,18 @@
+const { currentClass } = require("../classes");
 
 module.exports = {
     name: 'class',
     aliases: ['c', 'period'],
-    useage: "{c} [ -next / -perv / none ]",
+    usage: "{c} [ -next / -perv / none ]",
     description: 'tells you what class it is (IN PROGRESS)',
     depends: true,
     execute(client, message, [type], ClassesModule) {
+        if(!type) {
+            const _class = ClassesModule.getCurrentClass();
+            _class ? message.channel.send(`Class: \`${_class}\``) : message.channel.send("NO CLASS :D")
+        }
         if(type == "-next" || type == "next") {
-
+            
         }
     },
   };
