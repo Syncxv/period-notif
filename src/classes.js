@@ -45,15 +45,15 @@ class Classes {
     }
     getCurrentClass() {
         // DOESNWT WORK IM STUPID
-        const time = calcTime();
+        const time = calcTime()
+        const timeInt = time.getTime();
         for (let i = 0; i < this.startTimes.length; ++i) {
-            const periodStart = this.startTimes[i];
-            const periodEnd = this.endTimes[Boolean(i) ? i-1 : i];
-            const start = periodStart.getHours() * 60 + periodStart.getMinutes()
-            const end = periodEnd.getHours() * 60 + periodEnd.getMinutes()
-            const now = time.getHours() * 60 + time.getMinutes();
-            if(start <= now && now <= end) {
-                var periodIndex = this.startTimes.indexOf(periodStart)
+            const periodStart = this.startTimes[i].getTime();
+            const periodEnd = this.endTimes[i].getTime();
+            var isBetween = timeInt>=periodStart && timeInt<=periodEnd || timeInt>=periodEnd && timeInt<=periodStart
+            if(isBetween) {
+                var periodIndex = this.startTimes.indexOf(this.startTimes[i])
+                console.log(periodStart, periodIndex, time.getDay())
                 return this.timeTable[time.getDay()][periodIndex]
             }
                 

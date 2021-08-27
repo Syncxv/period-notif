@@ -10,7 +10,7 @@ module.exports = (client, message) => {
     //         stdio: "inherit"
     //     });
     // });
-    //right now it just turns it off :|
+    //right now it just turns it off
     process.exit(1);
     
 }
