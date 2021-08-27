@@ -4,6 +4,6 @@ module.exports = {
     aliases: ['t'],
     description: 'Sends the timetable :|',
     execute(client, message, args) {
-      message.channel.send("https://media.discordapp.net/attachments/816589800542175283/871601860908306462/10ig.png");
+      message.channel.send("https://media.discordapp.net/attachments/748017439496732702/880651104667463691/unknown.png");
     },
   };

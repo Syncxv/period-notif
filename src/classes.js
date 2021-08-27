@@ -2,11 +2,11 @@ const calcTime = require('./utils/timeIST')
 class Classes {
     constructor() {
         this.timeTable = {
-            1: ["phy/acc", "bio/bst", "chem/eco", "lang", "math", "phy/acc"],
-            2: ["ict", "lang", "phy/acc", "ict", "math", "self study / FREE"],
-            3: ["fle/esl", "fle/esl", "bio/bst", "chem/eco", "math", "self study / FREE"],
-            4: ["bio/bst", "chem/eco", "math", "lang", "phy/acc", "ict"],
-            5: ["lang", "chem/eco", "fle/esl", "fle/esl", "bio/bst", "ict"]
+            1: ["phy", "chem/eco", "self study", "bio/bst", "ict", "ict", 'phy/acc'],
+            2: ["math", "bio/bst", "self study", "self study", "phy/acc", "eco", "self study"],
+            3: ["fle/esl", "fle/esl", "math", "chem/bst", "lang", "lang", "phy/acc"],
+            4: ["lang", "chem", "math", "bio/bst", "ict", "ict", "chem/eco"],
+            5: ["math", "acc", "fle/esl", "fle/esl", "self study", "bio/bst", "self study"]
         }
         const [start, end] = this.generateStartTimes(calcTime(), [8, 30], 45)
         this.startTimes = start
@@ -22,11 +22,13 @@ class Classes {
         classTime += 5
         date.setHours(startTime[0], startTime[1]);
         startTimes.push(date)
-        for (let i = 0; i < 5; ++i) {
+        for (let i = 0; i < 6; ++i) {
             date = this.addMinutes(date, classTime)
             startTimes.push(date)
             endTimes.push(this.subMinutes(date, 5))
         }
+        startTime.push(new Date(date.setHours(2, 0)))
+        endTimes.push(new Date(date.setHours(2, 45)))
         return [startTimes, endTimes]
     }
     formatTimeHM(date) {
