@@ -43,7 +43,7 @@ class Classes {
     subMinutes(date, minutes) {
         return new Date(date.getTime() - minutes*60000);
     }
-    getCurrentClass() {
+    getCurrentClass(type) {
         // DOESNWT WORK IM STUPID
         const time = calcTime()
         const timeInt = time.getTime();
@@ -54,6 +54,12 @@ class Classes {
             if(isBetween) {
                 var periodIndex = this.startTimes.indexOf(this.startTimes[i])
                 console.log(periodStart, periodIndex, time.getDay())
+                if (type === "next") {
+                    return this.timeTable[time.getDay()][periodIndex+1]
+                }
+                else if (type === "previous") {
+                    return this.timeTable[time.getDay()][periodIndex-1]
+                }
                 return this.timeTable[time.getDay()][periodIndex]
             }
                 
