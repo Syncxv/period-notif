@@ -11,7 +11,7 @@ module.exports = {
             const _class = ClassesModule.getCurrentClass();
             _class ? message.channel.send(`Class: \`${_class}\``) : message.channel.send("NO CLASS :D")
         }
-        if(type == "-next" || type == "next" || "n") {
+        if(type == "-next" || type == "next" || type === "n") {
             const _class = ClassesModule.getCurrentClass("next")
             _class ? message.channel.send(`Class: \`${_class}\``) : message.channel.send("no class after this :O")
         }
