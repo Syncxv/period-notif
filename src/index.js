@@ -30,7 +30,7 @@ const send = (text) => {
 const notif = () => {
         if(!data.enabled) clearInterval(interval)
         var ok = calcTime().getHours()
-        if (!(ok >= 8 && ok <= 14)) {
+        if (!(ok >= 8 && ok <= 15)) {
             console.log("DONE FOR THE DAY")
             return; 
         }
