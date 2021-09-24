@@ -11,6 +11,15 @@ module.exports = (client, message) => {
     //     });
     // });
     //right now it just turns it off
-    process.exit(1);
+    setTimeout(function () {
+    process.on("exit", function () {
+        require("child_process").spawn(process.argv.shift(), process.argv, {
+            cwd: process.cwd(),
+            detached : true,
+            stdio: "inherit"
+        });
+    });
+    process.exit();
+}, 5000);
     
 }
